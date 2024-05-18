@@ -1,34 +1,64 @@
-.accordion-item {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  padding: 10px;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
 }
 
-.accordion-item h2 {
+.source-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.source-item .thema {
   font-size: 1.2em;
   color: #333;
-  flex: 1;
+  margin-bottom: 10px;
 }
 
-.accordion-item p {
-  margin: 5px;
-  flex: 1;
+.source-item .fach,
+.source-item .klasse,
+.source-item .bereich {
+  margin: 5px 0;
 }
 
-.accordion-item strong {
+.source-item .beschreibung {
+  margin: 10px 0;
+}
+
+.source-item h2 {
+  font-size: 1.5em;
   color: #555;
-  flex: 1;
+  margin-bottom: 10px;
 }
 
-.accordion-item a {
-  color: blue;
+.source-item p {
+  margin: 5px 0;
+}
+
+.source-item strong {
+  color: #0077cc;
+}
+
+.source-item a {
+  color: #0077cc;
   text-decoration: none;
-  flex: 1;
 }
 
-.accordion-item a:hover {
+.source-item a:hover {
   text-decoration: underline;
-  flex: 1;
+  color: #0056b3;
+}
+
+@media only screen and (min-width: 600px) {
+  .source-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .source-item p {
+    flex: 1;
+  }
 }
