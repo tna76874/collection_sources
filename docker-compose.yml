@@ -1,0 +1,9 @@
+services:
+  jekyll: 
+    image: jekyll/jekyll:latest
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./:/srv/jekyll
+    command: bash -c 'bundle install && bundle exec jekyll serve --host 0.0.0.0 --livereload'
+    # command: bash -c 'bundle update && bundle clean --force && bundle install'

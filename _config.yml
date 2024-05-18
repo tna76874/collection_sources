@@ -1,0 +1,13 @@
+remote_theme: jekyll/minima
+
+yt_base: https://invidious.fdn.fr
+
+markdown: null
+
+collections:
+  sources:
+    output: true
+
+exclude:
+  - docker-compose.yml
+  - README.md
