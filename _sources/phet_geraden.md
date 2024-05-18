@@ -5,5 +5,5 @@ fach: Mathematik
 bereich: lineare Funktionen
 thema: "Steigung und y-Achsenabschnitt"
 klasse: 7
-beschreibung: "Hinweis: die Pfeilenden an dem Koordinatensystemen und an den Geraden sind nicht korrekt. Es düften nur Pfeile an dem rechten Ende der x-Achse und an dem oberen Ende des Koordinatensystems vorhanden sein."
+beschreibung: "Hinweis: die Pfeilenden an dem Koordinatensystemen und an den Geraden sind nicht korrekt. Es düften nur Pfeile an dem rechten Ende der x-Achse und an dem oberen Ende der y-Achse vorhanden sein."
 ---
