@@ -21,11 +21,11 @@ class SourceParser:
             ('youtube_id', None),
             ('youtube_time_start', None),
             ('youtube_time_end', None),
+            ('fach', None),
+            ('klasse', None),
             ('bereich', None),
             ('thema', None),
             ('beschreibung', None),
-            ('fach', None),
-            ('klasse', None),
             ('reviewed_from', 'lmh'),
             ('reviewed_on', datetime.datetime.now().strftime('%d.%m.%Y')),
         ])
