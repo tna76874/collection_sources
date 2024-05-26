@@ -31,6 +31,7 @@ class SourceParser:
         ])
 
     def write_yaml_to_file(self, file_path, data):
+        file_path = os.path.join(os.path.dirname(file_path), self.slugify_file_name(file_path))
         with open(file_path, 'w') as file:
             file.write('---\n')
             yaml.dump(data, file, default_flow_style=False, allow_unicode=True, sort_keys=False)
@@ -63,6 +64,22 @@ class SourceParser:
 
                 for doc in parsed_data:
                     self.write_yaml_to_file(file_path, dict(doc))
+
+
+    def slugify_file_name(self, file_name, delete=True):
+        # Extract the base name from the full path
+        base_name_with_extension = os.path.basename(file_name)
+        # Remove file extension for slugifying
+        base_name = os.path.splitext(base_name_with_extension)[0]
+        # Replace non-alphanumeric characters with separator
+        slug = slugify(base_name, separator='_')
+        # Add the file extension back
+        slugified_name = f"{slug}.md"
+        old_file_path = os.path.join(self.config['sources_dir'], base_name_with_extension)
+        # If the cleaned filename is different, delete the old file if it exists
+        if base_name_with_extension != slugified_name and os.path.exists(old_file_path) and delete:
+            os.remove(old_file_path)
+        return slugified_name
                     
     def create_new_file(self):
         new_doc = OrderedDict()
@@ -71,7 +88,7 @@ class SourceParser:
             new_doc[key] = user_input if user_input else None
 
         file_name = input('Enter the name for the new source file (without extension): ') 
-        file_path = os.path.join(self.config['sources_dir'], slugify(file_name,separator='_')+'.md')
+        file_path = os.path.join(self.config['sources_dir'], self.slugify_file_name(file_name))
         
         self.write_yaml_to_file(file_path, dict(new_doc))
 
