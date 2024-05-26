@@ -8,6 +8,7 @@ import yaml
 import datetime
 import argparse
 from collections import OrderedDict
+from slugify import slugify
 
 class SourceParser:
     def __init__(self, **kwargs):
@@ -27,7 +28,13 @@ class SourceParser:
             ('klasse', None),
             ('reviewed_from', 'lmh'),
             ('reviewed_on', datetime.datetime.now().strftime('%d.%m.%Y')),
-        ])   
+        ])
+
+    def write_yaml_to_file(self, file_path, data):
+        with open(file_path, 'w') as file:
+            file.write('---\n')
+            yaml.dump(data, file, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            file.write('---\n')
 
     def parse_sources_file(self, file_path):
         with open(file_path, 'r') as file:
@@ -54,15 +61,24 @@ class SourceParser:
                 file_path = os.path.join(self.config['sources_dir'], file_name)
                 parsed_data = self.parse_sources_file(file_path)
 
-                with open(file_path, 'w') as file:
-                    file.write('---\n')
-                    for doc in parsed_data:
-                        yaml.dump(dict(doc), file, default_flow_style=False, allow_unicode=True, sort_keys=False)
-                        file.write('---\n')
+                for doc in parsed_data:
+                    self.write_yaml_to_file(file_path, dict(doc))
+                    
+    def create_new_file(self):
+        new_doc = OrderedDict()
+        for key in self.source_keys.keys():
+            user_input = input(f'Enter value for {key} \t (default: {self.source_keys.get(key)}): ')
+            new_doc[key] = user_input if user_input else None
+
+        file_name = input('Enter the name for the new source file (without extension): ') 
+        file_path = os.path.join(self.config['sources_dir'], slugify(file_name,separator='_')+'.md')
+        
+        self.write_yaml_to_file(file_path, dict(new_doc))
 
 def main():
     parser = argparse.ArgumentParser(description='Parse and process source files.')
     parser.add_argument('--clean', action='store_true', help='Toggle to clean process the files')
+    parser.add_argument('-n', '--new', action='store_true', help='Toggle to create a new source file')
 
 
     args = parser.parse_args()
@@ -71,6 +87,9 @@ def main():
     
     if args.clean:
         source_parser.clean_files()
+
+    if args.new:
+        source_parser.create_new_file()
 
 if __name__ == '__main__':
     main()
