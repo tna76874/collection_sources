@@ -11,3 +11,4 @@ collections:
 exclude:
   - docker-compose.yml
   - README.md
+  - manage.py

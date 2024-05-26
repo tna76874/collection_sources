@@ -1,9 +1,13 @@
 ---
-source_link: 
+source_link: null
 youtube_id: 44xsAVSq65c
-fach: Physik
+youtube_time_start: null
+youtube_time_end: null
 bereich: Energie
 thema: Lageenergie
-klasse: "8"
-beschreibung: Lageenergie berechnen. 
+beschreibung: Lageenergie berechnen.
+fach: Physik
+klasse: '8'
+reviewed_from: lmh
+reviewed_on: 26.05.2024
 ---

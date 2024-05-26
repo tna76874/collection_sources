@@ -1,11 +1,15 @@
 ---
-source_link: 
+source_link: null
 youtube_id: wMOgfiajqtY
 youtube_time_start: 110
 youtube_time_end: 225
-fach: Physik
 bereich: Energie
 thema: Hemmungspendel
-klasse: "8 / JG11"
-beschreibung: "Energieumwandlungen am Hemmungspendel. Die Lageenergie wird hier mit E_pot (potenzielle Energie) bezeichnet. Hinweis: Für Klassenstufe 8 die Formeln zur Schwingungsdauer nicht beachten."
+beschreibung: 'Energieumwandlungen am Hemmungspendel. Die Lageenergie wird hier mit
+  E_pot (potenzielle Energie) bezeichnet. Hinweis: Für Klassenstufe 8 die Formeln
+  zur Schwingungsdauer nicht beachten.'
+fach: Physik
+klasse: 8 / JG11
+reviewed_from: lmh
+reviewed_on: 26.05.2024
 ---

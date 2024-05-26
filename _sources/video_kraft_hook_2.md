@@ -1,9 +1,14 @@
 ---
-source_link: 
+source_link: null
 youtube_id: yzmfggeXfNI
-fach: Physik
+youtube_time_start: null
+youtube_time_end: null
 bereich: Kraft
-thema: "Hookesches Gesetz"
-klasse: "8"
-beschreibung: "Ein Material, das dem Hookeschen Gesetz nicht folgt: Dehnung eines Gummis"
+thema: Hookesches Gesetz
+beschreibung: 'Ein Material, das dem Hookeschen Gesetz nicht folgt: Dehnung eines
+  Gummis'
+fach: Physik
+klasse: '8'
+reviewed_from: lmh
+reviewed_on: 26.05.2024
 ---
