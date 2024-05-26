@@ -8,10 +8,10 @@ title: Materialsammlung
 <table id="materialTable">
   <thead>
     <tr>
-      <th onclick="sortTable(0)">Thema</th>
-      <th onclick="sortTable(1)">Fach</th>
-      <th onclick="sortTable(2)">Klasse</th>
-      <th onclick="sortTable(3)">Bereich</th>
+      <th>Thema</th>
+      <th>Fach</th>
+      <th>Klasse</th>
+      <th>Bereich</th>
       <th>Beschreibung</th>
     </tr>
   </thead>
@@ -40,7 +40,5 @@ title: Materialsammlung
     {% endfor %}
   </tbody>
 </table>
-
-
 
 
