@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (confirm("Es wird keine Gewähr für den Inhalt der Quelle übernommen. Die folgenden fachlichen Hinweise zu der Quelle werden zur Kenntnis genommen:\n\n" + description)) {
                 window.location.href = event.target.parentElement.href;
             }
+            event.preventDefault();
         }
     });
 });
