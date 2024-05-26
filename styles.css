@@ -3,62 +3,35 @@ body {
   background-color: #f9f9f9;
 }
 
-.source-item {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+table {
+  width: 100%;
+  border-collapse: collapse;
   margin-bottom: 20px;
-  padding: 15px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.source-item .thema {
-  font-size: 1.2em;
-  color: #333;
-  margin-bottom: 10px;
+th, td {
+  border: 1px solid #ccc;
+  padding: 15px;
+  text-align: left;
 }
 
-.source-item .fach,
-.source-item .klasse,
-.source-item .bereich {
-  margin: 5px 0;
+th {
+  cursor: pointer;
+  background-color: #f2f2f2;
 }
 
-.source-item .beschreibung {
-  margin: 10px 0;
+th:hover {
+  background-color: #e6e6e6;
 }
 
-.source-item h2 {
-  font-size: 1.5em;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-.source-item p {
-  margin: 5px 0;
-}
-
-.source-item strong {
-  color: #0077cc;
-}
-
-.source-item a {
+td a {
   color: #0077cc;
   text-decoration: none;
 }
 
-.source-item a:hover {
+td a:hover {
   text-decoration: underline;
   color: #0056b3;
-}
-
-@media only screen and (min-width: 600px) {
-  .source-item {
-    display: flex;
-    align-items: center;
-  }
-
-  .source-item p {
-    flex: 1;
-  }
 }
