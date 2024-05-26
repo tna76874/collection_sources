@@ -15,7 +15,7 @@ title: Materialsammlung
       <th>Beschreibung</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="tableBody">
     {% assign sorted_sources = site.sources | custom_sort: 'fach', 'klasse', 'bereich', 'thema' %}
     {% for source in sorted_sources %}
       <tr>
