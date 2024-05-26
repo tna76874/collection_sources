@@ -8,7 +8,7 @@ title: Materialsammlung
 <table id="materialTable">
   <thead>
     <tr>
-      <th>Thema</th>
+      <th>Quelle</th>
       <th>Fach</th>
       <th>Klasse</th>
       <th>Bereich</th>
@@ -25,11 +25,11 @@ title: Materialsammlung
                 {%- if source.youtube_time_start -%}t={{ source.youtube_time_start }}{%- endif -%}
                 {%- if source.youtube_time_start and source.youtube_time_end -%}&{%- endif -%}
                 {%- if source.youtube_time_end -%}end={{ source.youtube_time_end }}{%- endif -%}
-            {% endif %}" target="_blank">
+            {% endif %}">
                 <strong>{{ source.thema }}</strong>
             </a>
           {% else %}
-            <a href="{{ source.source_link }}" target="_blank"><strong>{{ source.thema }}</strong></a>
+            <a href="{{ source.source_link }}"><strong>{{ source.thema }}</strong></a>
           {% endif %}
         </td>
         <td>{{ source.fach }}</td>
