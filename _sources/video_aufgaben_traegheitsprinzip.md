@@ -1,4 +1,5 @@
 ---
+sid: of
 source_link: https://www.leifiphysik.de/mechanik/kraft-und-bewegungsaenderung/grundwissen/1-newtonsches-gesetz-traegheitsgesetz
 youtube_id: null
 youtube_time_start: null
