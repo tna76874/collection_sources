@@ -31,6 +31,9 @@ title: Materialsammlung
           {% else %}
             <a href="{{ source.source_link }}"><strong>{{ source.thema }}</strong></a>
           {% endif %}
+          <a href="/?id={{ source.sid }}" title="share">
+            <i class="fas fa-share-nodes"></i>
+          </a>
         </td>
         <td>{{ source.fach }}</td>
         <td>Klassenstufe {{ source.klasse }}</td>
