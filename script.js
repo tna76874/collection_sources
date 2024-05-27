@@ -16,12 +16,16 @@ function filterTable() {
     for (let i = 0; i < rows.length; i++) {
         const fach = rows[i].getElementsByTagName("TD")[1].innerText.toLowerCase();
         const klasse = rows[i].getElementsByTagName("TD")[2].innerText.toLowerCase();
+        const bereich = rows[i].getElementsByTagName("TD")[3].innerText.toLowerCase();
         let display = true;
         if (params['fach'] && !fach.includes(params['fach'].toLowerCase())) {
-        display = false;
+            display = false;
         }
         if (params['klasse'] && !klasse.includes(params['klasse'].toLowerCase())) {
-        display = false;
+            display = false;
+        }
+        if (params['bereich'] && !bereich.includes(params['bereich'].toLowerCase())) {
+            display = false;
         }
         rows[i].style.display = display ? "" : "none";
     }
