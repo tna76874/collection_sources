@@ -9,6 +9,28 @@ import datetime
 import argparse
 from collections import OrderedDict
 from slugify import slugify
+import requests
+
+class YouTubeVideoChecker:
+    def __init__(self, video_id):
+        self.video_id = video_id
+        self.thumbnail_url = f'http://img.youtube.com/vi/{video_id}/mqdefault.jpg'
+
+    def check(self):
+        response = requests.head(self.thumbnail_url)
+        
+        if response.status_code == 200:
+            return self._check_thumbnail(response.headers.get('Content-Length'))
+        else:
+            return False
+
+    def _check_thumbnail(self, content_length):
+        # Ein mq-Thumbnail hat eine Breite von 320.
+        # Wenn das Video nicht existiert (und daher das Thumbnail nicht existiert), wird ein Standard-Thumbnail mit einer Breite von 120 zurückgegeben.
+        if content_length == 120:
+            return False
+        else:
+            return True
 
 class SourceParser:
     def __init__(self, **kwargs):
@@ -62,8 +84,17 @@ class SourceParser:
                 file_path = os.path.join(self.config['sources_dir'], file_name)
                 parsed_data = self.parse_sources_file(file_path)
 
-                for doc in parsed_data:
-                    self.write_yaml_to_file(file_path, dict(doc))
+                if not len(parsed_data)==1:
+                    raise ValueError(f"Invalid source file")
+                
+                doc = parsed_data[0]
+
+                # checking if youtube id is valid
+                if doc.get('youtube_id'):
+                    if not YouTubeVideoChecker(doc['youtube_id']).check():
+                        raise ValueError(f"Invalid YouTube-ID in file {file_name}: \n{parsed_data}")
+
+                self.write_yaml_to_file(file_path, dict(doc))
 
 
     def slugify_file_name(self, file_name, delete=True):
