@@ -41,9 +41,32 @@ function sortTable(column, ascending) {
     });
     rows.forEach(row => tbody.appendChild(row));
 }
+
+function sortMultiLevel() {
+    const tbody = document.getElementById("tableBody");
+    const rows = Array.from(tbody.getElementsByTagName("tr"));
+    rows.sort((a, b) => {
+        const fachA = a.querySelector('td:nth-child(2)').innerText;
+        const fachB = b.querySelector('td:nth-child(2)').innerText;
+        const klasseA = a.querySelector('td:nth-child(3)').innerText;
+        const klasseB = b.querySelector('td:nth-child(3)').innerText;
+        const bereichA = a.querySelector('td:nth-child(4)').innerText;
+        const bereichB = b.querySelector('td:nth-child(4)').innerText;
+
+        if (fachA !== fachB) {
+            return fachA.localeCompare(fachB, 'de', { numeric: true });
+        } else if (klasseA !== klasseB) {
+            return klasseA.localeCompare(klasseB, 'de', { numeric: true });
+        } else {
+            return bereichA.localeCompare(bereichB, 'de', { numeric: true });
+        }
+    });
+    rows.forEach(row => tbody.appendChild(row));
+}
  
 document.addEventListener("DOMContentLoaded", () => {
     filterTable();
+    sortMultiLevel();
 
     const tableBody = document.getElementById("tableBody");
     tableBody.addEventListener("click", (event) => {
