@@ -16,8 +16,7 @@ title: Materialsammlung
     </tr>
   </thead>
   <tbody id="tableBody">
-    {% assign sorted_sources = site.sources | custom_sort: 'fach', 'klasse', 'bereich', 'thema' %}
-    {% for source in sorted_sources %}
+    {% for source in site.sources %}
       <tr data-id="{{ source.sid }}">
         <td>
           {% if source.source_link == nil or source.source_link == "" %}

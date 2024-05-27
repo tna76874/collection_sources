@@ -78,13 +78,17 @@ function sortMultiLevel() {
         const klasseB = b.querySelector('td:nth-child(3)').innerText;
         const bereichA = a.querySelector('td:nth-child(4)').innerText;
         const bereichB = b.querySelector('td:nth-child(4)').innerText;
+        const themaA = a.querySelector('td:nth-child(1)').innerText;
+        const themaB = b.querySelector('td:nth-child(1)').innerText;
 
         if (fachA !== fachB) {
             return fachA.localeCompare(fachB, 'de', { numeric: true });
         } else if (klasseA !== klasseB) {
             return klasseA.localeCompare(klasseB, 'de', { numeric: true });
-        } else {
+        } else if (bereichA !== bereichB) {
             return bereichA.localeCompare(bereichB, 'de', { numeric: true });
+        } else {
+            return themaA.localeCompare(themaB, 'de', { numeric: true });
         }
     });
     rows.forEach(row => tbody.appendChild(row));
