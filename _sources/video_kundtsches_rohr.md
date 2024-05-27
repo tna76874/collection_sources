@@ -8,6 +8,6 @@ klasse: JG11
 bereich: Wellen
 thema: stehende Wellen
 beschreibung: 'Experient: Schallgeschwindigkeit mit dem Kundtschen Rohr'
-reviewed_from: null
-reviewed_on: null
+reviewed_from: lmh
+reviewed_on: 27.05.2024
 ---
