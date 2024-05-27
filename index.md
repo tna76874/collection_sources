@@ -18,7 +18,7 @@ title: Materialsammlung
   <tbody id="tableBody">
     {% assign sorted_sources = site.sources | custom_sort: 'fach', 'klasse', 'bereich', 'thema' %}
     {% for source in sorted_sources %}
-      <tr>
+      <tr data-id="{{ source.sid }}">
         <td>
           {% if source.source_link == nil or source.source_link == "" %}
             <a href="{{ site.yt_base }}/embed/{{ source.youtube_id }}{%- if source.youtube_time_start or source.youtube_time_end -%}?

@@ -61,7 +61,7 @@ class SourceParser:
         self.config.update(kwargs)
         self.ids = UniqueIDGenerator()
         self.source_keys = OrderedDict([
-            ('id', self.ids.new),
+            ('sid', self.ids.new),
             ('source_link', None),
             ('youtube_id', None),
             ('youtube_time_start', None),
@@ -74,6 +74,10 @@ class SourceParser:
             ('reviewed_from', 'lmh'),
             ('reviewed_on', datetime.datetime.now().strftime('%d.%m.%Y')),
         ])
+        
+        self.rename_keys =  {
+                            'id' : 'sid',
+                            }
 
     def write_yaml_to_file(self, file_path, data):
         file_path = os.path.join(os.path.dirname(file_path), self.slugify_file_name(file_path))
@@ -89,9 +93,10 @@ class SourceParser:
             parsed_data = []
             for doc in content:
                 if doc:
+                    doc = {self.rename_keys.get(k, k): v for k, v in doc.items()}
                     ordered_doc = OrderedDict()
                     for key in self.source_keys.keys():
-                        if key=='id' and doc.get(key)!=None:
+                        if key=='sid' and doc.get(key)!=None:
                             doc[key] = self.ids.add(doc.get(key))
                             
                         ordered_doc[key] = doc.get(key) or self.source_keys.get(key) or None

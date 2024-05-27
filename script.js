@@ -13,23 +13,45 @@ function filterTable() {
     const params = getQueryParams();
     const tbody = document.getElementById("tableBody");
     const rows = tbody.getElementsByTagName("tr");
-    for (let i = 0; i < rows.length; i++) {
-        const fach = rows[i].getElementsByTagName("TD")[1].innerText.toLowerCase();
-        const klasse = rows[i].getElementsByTagName("TD")[2].innerText.toLowerCase();
-        const bereich = rows[i].getElementsByTagName("TD")[3].innerText.toLowerCase();
-        let display = true;
-        if (params['fach'] && !fach.includes(params['fach'].toLowerCase())) {
-            display = false;
+    const filterById = params['id'];
+    
+    if (filterById) {
+        // Hide all rows initially
+        for (let i = 0; i < rows.length; i++) {
+            rows[i].style.display = "none";
         }
-        if (params['klasse'] && !klasse.includes(params['klasse'].toLowerCase())) {
-            display = false;
+        // Show only the row with the matching data-id
+        for (let i = 0; i < rows.length; i++) {
+            const rowId = rows[i].getAttribute('data-id');
+            if (rowId === filterById) {
+                rows[i].style.display = "";
+                break;
+            }
         }
-        if (params['bereich'] && !bereich.includes(params['bereich'].toLowerCase())) {
-            display = false;
+    } else {
+        // Filter by other parameters (fach, klasse, bereich)
+        for (let i = 0; i < rows.length; i++) {
+            const fach = rows[i].getElementsByTagName("TD")[1].innerText.toLowerCase();
+            const klasse = rows[i].getElementsByTagName("TD")[2].innerText.toLowerCase();
+            const bereich = rows[i].getElementsByTagName("TD")[3].innerText.toLowerCase();
+            
+            let display = true;
+
+            if (params['fach'] && !fach.includes(params['fach'].toLowerCase())) {
+                display = false;
+            }
+            if (params['klasse'] && !klasse.includes(params['klasse'].toLowerCase())) {
+                display = false;
+            }
+            if (params['bereich'] && !bereich.includes(params['bereich'].toLowerCase())) {
+                display = false;
+            }
+
+            rows[i].style.display = display ? "" : "none";
         }
-        rows[i].style.display = display ? "" : "none";
     }
 }
+
 
 function sortTable(column, ascending) {
     const tbody = document.getElementById("tableBody");
