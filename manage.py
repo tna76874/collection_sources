@@ -10,6 +10,27 @@ import argparse
 from collections import OrderedDict
 from slugify import slugify
 import requests
+import random
+import string
+
+class UniqueIDGenerator:
+    def __init__(self):
+        self.ids = set()
+        self.k = 2
+
+    def add(self, new_id):
+        if new_id in self.ids:
+            new_id = self.new
+        self.ids.add(new_id)
+        return new_id
+
+    def new(self):
+        characters = string.ascii_letters + string.digits
+        while True:
+            unique_id = ''.join(random.choices(characters, k=int(self.k)))
+            if unique_id not in self.ids:
+                self.ids.add(unique_id)
+                return unique_id
 
 class YouTubeVideoChecker:
     def __init__(self, video_id):
@@ -38,7 +59,9 @@ class SourceParser:
                         'sources_dir' : '_sources',
                         }
         self.config.update(kwargs)
+        self.ids = UniqueIDGenerator()
         self.source_keys = OrderedDict([
+            ('id', self.ids.new),
             ('source_link', None),
             ('youtube_id', None),
             ('youtube_time_start', None),
@@ -68,6 +91,9 @@ class SourceParser:
                 if doc:
                     ordered_doc = OrderedDict()
                     for key in self.source_keys.keys():
+                        if key=='id' and doc.get(key)!=None:
+                            doc[key] = self.ids.add(doc.get(key))
+                            
                         ordered_doc[key] = doc.get(key) or self.source_keys.get(key) or None
 
                     for key in doc:
@@ -93,6 +119,10 @@ class SourceParser:
                 if doc.get('youtube_id'):
                     if not YouTubeVideoChecker(doc['youtube_id']).check():
                         raise ValueError(f"Invalid YouTube-ID in file {file_name}: \n{parsed_data}")
+                 
+                for key in doc:
+                    if callable(doc[key]):
+                        doc[key] = doc[key]()
 
                 self.write_yaml_to_file(file_path, dict(doc))
 
@@ -115,8 +145,9 @@ class SourceParser:
     def create_new_file(self):
         new_doc = OrderedDict()
         for key in self.source_keys.keys():
-            user_input = input(f'Enter value for {key} \t (default: {self.source_keys.get(key)}): ')
-            new_doc[key] = user_input if user_input else self.source_keys.get(key) or None
+            if key!='id':
+                user_input = input(f'Enter value for {key} \t (default: {self.source_keys.get(key)}): ')
+                new_doc[key] = user_input if user_input else self.source_keys.get(key) or None
 
         file_name = input('Enter the name for the new source file (without extension): ') 
         file_path = os.path.join(self.config['sources_dir'], self.slugify_file_name(file_name))
