@@ -150,7 +150,7 @@ class SourceParser:
     def create_new_file(self):
         new_doc = OrderedDict()
         for key in self.source_keys.keys():
-            if key!='id':
+            if key!='sid':
                 user_input = input(f'Enter value for {key} \t (default: {self.source_keys.get(key)}): ')
                 new_doc[key] = user_input if user_input else self.source_keys.get(key) or None
 
