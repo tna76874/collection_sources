@@ -115,22 +115,21 @@ class SourceParser:
                 file_path = os.path.join(self.config['sources_dir'], file_name)
                 parsed_data = self.parse_sources_file(file_path)
 
-                if not len(parsed_data)==1:
+                if not len(parsed_data) == 1:
                     raise ValueError(f"Invalid source file")
-                
+
                 doc = parsed_data[0]
 
                 # checking if youtube id is valid
                 if doc.get('youtube_id'):
                     if not YouTubeVideoChecker(doc['youtube_id']).check():
                         raise ValueError(f"Invalid YouTube-ID in file {file_name}: \n{parsed_data}")
-                 
+
                 for key in doc:
                     if callable(doc[key]):
                         doc[key] = doc[key]()
 
                 self.write_yaml_to_file(file_path, dict(doc))
-
 
     def slugify_file_name(self, file_name, delete=True):
         # Extract the base name from the full path
@@ -146,18 +145,22 @@ class SourceParser:
         if base_name_with_extension != slugified_name and os.path.exists(old_file_path) and delete:
             os.remove(old_file_path)
         return slugified_name
-                    
+
     def create_new_file(self):
         new_doc = OrderedDict()
         for key in self.source_keys.keys():
-            if key!='sid':
+            if key != 'sid':
+                if key.startswith('youtube_') and new_doc.get('source_link') is not None:
+                    continue
                 user_input = input(f'Enter value for {key} \t (default: {self.source_keys.get(key)}): ')
                 new_doc[key] = user_input if user_input else self.source_keys.get(key) or None
-
-        file_name = input('Enter the name for the new source file (without extension): ') 
+    
+        file_name = input('Enter the name for the new source file (without extension): ')
         file_path = os.path.join(self.config['sources_dir'], self.slugify_file_name(file_name))
-        
+    
         self.write_yaml_to_file(file_path, dict(new_doc))
+        
+        self.clean_files()
 
 def main():
     parser = argparse.ArgumentParser(description='Parse and process source files.')
