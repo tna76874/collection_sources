@@ -1,0 +1,3 @@
+# Collection of content
+
+This repo is intended to serve as a convenient resource for accessing school-related content. However, it is important to note that the content of the links provided may vary, and as such, no responsibility is taken for the accuracy, relevance, or safety of the content found through these links. Users are advised to exercise caution and discretion when accessing external websites linked within this repository.
