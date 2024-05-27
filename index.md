@@ -8,10 +8,10 @@ title: Materialsammlung
 <table id="materialTable">
   <thead>
     <tr>
-      <th>Quelle</th>
-      <th>Fach</th>
-      <th>Klasse</th>
-      <th>Bereich</th>
+      <th class="sortable" data-column="thema">Quelle</th>
+      <th class="sortable" data-column="fach">Fach</th>
+      <th class="sortable" data-column="klasse">Klasse</th>
+      <th class="sortable" data-column="bereich">Bereich</th>
       <th>Beschreibung</th>
     </tr>
   </thead>

@@ -26,6 +26,21 @@ function filterTable() {
         rows[i].style.display = display ? "" : "none";
     }
 }
+
+function sortTable(column, ascending) {
+    const tbody = document.getElementById("tableBody");
+    const rows = Array.from(tbody.getElementsByTagName("tr"));
+    rows.sort((a, b) => {
+        const aText = a.querySelector(`td:nth-child(${column + 1})`).innerText;
+        const bText = b.querySelector(`td:nth-child(${column + 1})`).innerText;
+        if (ascending) {
+            return aText.localeCompare(bText, 'de', { numeric: true });
+        } else {
+            return bText.localeCompare(aText, 'de', { numeric: true });
+        }
+    });
+    rows.forEach(row => tbody.appendChild(row));
+}
  
 document.addEventListener("DOMContentLoaded", () => {
     filterTable();
@@ -39,5 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             event.preventDefault();
         }
+    });
+
+    const sortableHeaders = document.querySelectorAll("th.sortable");
+    sortableHeaders.forEach((header, index) => {
+        let ascending = true;
+        header.addEventListener("click", () => {
+            sortTable(index, ascending);
+            ascending = !ascending;
+        });
     });
 });
