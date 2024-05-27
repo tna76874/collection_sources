@@ -125,7 +125,7 @@ class SourceParser:
 
 def main():
     parser = argparse.ArgumentParser(description='Parse and process source files.')
-    parser.add_argument('--clean', action='store_true', help='Toggle to clean process the files')
+    parser.add_argument('-c', '--clean', action='store_true', help='Toggle to clean process the files')
     parser.add_argument('-n', '--new', action='store_true', help='Toggle to create a new source file')
 
 
