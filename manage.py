@@ -116,7 +116,7 @@ class SourceParser:
         new_doc = OrderedDict()
         for key in self.source_keys.keys():
             user_input = input(f'Enter value for {key} \t (default: {self.source_keys.get(key)}): ')
-            new_doc[key] = user_input if user_input else None
+            new_doc[key] = user_input if user_input else self.source_keys.get(key) or None
 
         file_name = input('Enter the name for the new source file (without extension): ') 
         file_path = os.path.join(self.config['sources_dir'], self.slugify_file_name(file_name))
