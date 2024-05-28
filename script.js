@@ -113,32 +113,7 @@ function adjustBodyPadding() {
     document.body.style.paddingBottom = footerHeight + 'px';
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    filterTable();
-    sortMultiLevel();
-    adjustBodyPadding();
-
-    const tableBody = document.getElementById("tableBody");
-    tableBody.addEventListener("click", (event) => {
-        if (event.target.tagName === "STRONG") {
-            const description = event.target.parentElement.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
-            if (confirm(description)) {
-                window.location.href = event.target.parentElement.href;
-            }
-            event.preventDefault();
-        }
-    });
-
-    const sortableHeaders = document.querySelectorAll("th.sortable");
-    sortableHeaders.forEach((header, index) => {
-        let ascending = true;
-        header.addEventListener("click", () => {
-            sortTable(index, ascending);
-            ascending = !ascending;
-        });
-    });
-
-    // INFO ICON POPUP
+function setupInfoPopup() {
     const infoIcons = document.querySelectorAll('.info-icon');
     const infoPopup = document.createElement('div');
     infoPopup.className = 'info-popup';
@@ -158,9 +133,38 @@ document.addEventListener("DOMContentLoaded", () => {
         icon.addEventListener('mouseleave', () => {
             infoPopup.style.display = 'none';
         });
-    });
 
-    // Disclaimer logic
+        icon.addEventListener('click', event => {
+            event.stopPropagation();
+        });
+    });
+}
+
+function hrefDisclaimer() {
+    const tableBody = document.getElementById("tableBody");
+    tableBody.addEventListener("click", (event) => {
+        if (event.target.tagName === "STRONG") {
+            const description = event.target.parentElement.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
+            if (confirm(description)) {
+                window.location.href = event.target.parentElement.href;
+            }
+            event.preventDefault();
+        }
+    });
+}
+
+function tableSorter() {
+    const sortableHeaders = document.querySelectorAll("th.sortable");
+    sortableHeaders.forEach((header, index) => {
+        let ascending = true;
+        header.addEventListener("click", () => {
+            sortTable(index, ascending);
+            ascending = !ascending;
+        });
+    });
+}
+
+function disclaimerPopup() {
     const disclaimer = document.getElementById('disclaimer');
     const acceptDisclaimer = document.getElementById('acceptDisclaimer');
     const declineDisclaimer = document.getElementById('declineDisclaimer');
@@ -179,7 +183,31 @@ document.addEventListener("DOMContentLoaded", () => {
     declineDisclaimer.addEventListener('click', () => {
         window.location.href = 'https://google.de';
     });
+}
 
-    // GET CURRENT YEAR
+document.addEventListener("DOMContentLoaded", () => {
+    // filter table according to args
+    filterTable();
+
+    // sort the table
+    sortMultiLevel();
+
+    // ensure header and footer spacings
+    adjustBodyPadding();
+
+    // ensure hints on href clicks
+    hrefDisclaimer()
+
+    // activate sorting on table heading clicks
+    tableSorter()
+
+
+    // info icon popups
+    setupInfoPopup()
+
+    // initial disclaimer popup
+    disclaimerPopup()
+
+    // set current year
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 });

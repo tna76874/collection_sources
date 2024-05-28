@@ -71,6 +71,7 @@ td a:hover {
   }
 }
 
+/* INFO ICON */
 .info-icon {
   color: var(--link-color);;
   cursor: pointer;
