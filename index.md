@@ -17,6 +17,7 @@ title: Materialsammlung
     {% for source in site.sources %}
       <tr data-id="{{ source.sid }}">
         <td>
+          <div class="source-link">
           {% if source.source_link == nil or source.source_link == "" %}
             <a href="{{ site.yt_base }}/embed/{{ source.youtube_id }}{%- if source.youtube_time_start or source.youtube_time_end -%}?
                 {%- if source.youtube_time_start -%}t={{ source.youtube_time_start }}{%- endif -%}
@@ -28,6 +29,7 @@ title: Materialsammlung
           {% else %}
             <a href="{{ source.source_link }}"><strong>{{ source.thema }}</strong></a>
           {% endif %}
+          </div>
           <a href="/?id={{ source.sid }}" title="share" onclick="navigator.clipboard.writeText(window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + this.getAttribute('href'))">
             <i class="fas fa-share-nodes"></i>
           </a>

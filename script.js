@@ -50,6 +50,22 @@ function filterTable() {
             rows[i].style.display = display ? "" : "none";
         }
     }
+
+    // check for direct source redirect
+    const acceptedParam = params['accepted'];
+    if (acceptedParam === 'True' && filterById) {
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const rowId = row.getAttribute('data-id');
+            if (rowId === filterById) {
+                const sourceLink = row.querySelector('.source-link a');
+                if (sourceLink) {
+                    window.location.href = sourceLink.getAttribute('href');
+                }
+                break;
+            }
+        }
+    }
 }
 
 
