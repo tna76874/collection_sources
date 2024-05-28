@@ -94,9 +94,29 @@ function sortMultiLevel() {
     rows.forEach(row => tbody.appendChild(row));
 }
 
+function adjustBodyPadding() {
+    // Get the header and footer elements
+    var header = document.querySelector('.header');
+    var footer = document.querySelector('.footer');
+    
+    // Get the heights of the header and footer
+    var headerHeight = header.offsetHeight + 10;
+    var footerHeight = footer.offsetHeight + 5;
+    
+    // Calculate the total height needed for padding
+    var totalHeight = headerHeight + footerHeight;
+    
+    // Set the body padding-top to the total height
+    document.body.style.paddingTop = headerHeight + 'px';
+    
+    // Set the body padding-bottom to the footer height
+    document.body.style.paddingBottom = footerHeight + 'px';
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     filterTable();
     sortMultiLevel();
+    adjustBodyPadding();
 
     const tableBody = document.getElementById("tableBody");
     tableBody.addEventListener("click", (event) => {
@@ -159,4 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     declineDisclaimer.addEventListener('click', () => {
         window.location.href = 'https://google.de';
     });
+
+    // GET CURRENT YEAR
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
 });

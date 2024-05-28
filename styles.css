@@ -1,6 +1,19 @@
+:root {
+  --primary-color: #0077cc;
+  --secondary-color: #333;
+  --text-color: #000; 
+  --hint-color: #ffffff;
+  --link-color: var(--primary-color);
+}
+
+
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
 
 table {
@@ -27,13 +40,13 @@ th:hover {
 }
 
 td a {
-  color: #0077cc;
+  color: var(--link-color);
   text-decoration: none;
 }
 
 td a:hover {
   text-decoration: underline;
-  color: #0056b3;
+  color: var(--link-color);
 }
 
 /* Media Query für mobile Geräte */
@@ -59,7 +72,7 @@ td a:hover {
 }
 
 .info-icon {
-  color: #0077cc;
+  color: var(--link-color);;
   cursor: pointer;
 }
 
@@ -117,4 +130,66 @@ td a:hover {
 
 .disclaimer button:hover {
   background-color: #0056b3;
+}
+
+/* Header */
+.header {
+  background-color: #0077cc;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Stelle sicher, dass der Header über anderen Inhalten liegt */
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer img {
+  height: 20px;
+}
+
+.github-icon {
+  color: white;
+  font-size: 2em;
+  margin-left: 20px;
+}
+
+.footer-left {
+  margin-left: 20px;
+}
+
+.footer-right {
+  margin-right: 20px;
 }

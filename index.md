@@ -3,8 +3,6 @@ layout: default
 title: Materialsammlung
 ---
 
-# Materialsammlung
-
 <table id="materialTable">
   <thead>
     <tr>
@@ -43,27 +41,6 @@ title: Materialsammlung
     {% endfor %}
   </tbody>
 </table>
-
-<div id="disclaimer" class="disclaimer">
-  <div class="disclaimer-content">
-  <p>Der Betreiber verlinkt von seiner Website auf externe Websites. Durch diese sogenannten „Hyperlinks“ wird der Nutzer direkt auf die externe Website weitergeleitet. Das Setzen von „Hyperlinks“ bedeutet nicht, dass sich der Betreiber die hinter dem Link liegenden Inhalte zu Eigen macht. Der Betreiber hat keinerlei Einfluss auf die Informationen der externen Website. Daher kann keine Gewähr für die fachliche Korrektheit, Aktualität, Richtigkeit und Vollständigkeit der Inhalte der externen Website übernommen werden.</p>
-
-  <p>Für die Inhalte der externen Websites ist ausschließlich der jeweilige Anbieter oder Betreiber verantwortlich.</p>
-
-  <p>Der Betreiber versichert jedoch, dass ihm zum Zeitpunkt des Setzens der Verlinkung keine rechtlichen Verstöße bekannt waren und er die externe Website im Rahmen des Zumutbaren geprüft hat.</p>
-
-  <p>Es wird darauf hingewiesen, dass vor dem Klicken auf die Links die Hinweise zu den Links sorgfältig zur Kenntnis genommen werden sollten.</p>
-
-  <p>Solange keine konkreten Anhaltspunkte einer Rechtsverletzung vorliegen, ist eine permanente inhaltliche Kontrolle der verlinkten Website für den Betreiber nicht zumutbar.</p>
-
-  <p>Sollte der Betreiber Kenntnis von der Rechtswidrigkeit der verlinkten Inhalte erlangen, wird der entsprechende Link unverzüglich entfernt.</p>
-
-  <p>Bei Fragen oder Anliegen können Sie auch über <a href="https://github.com/{{ site.github_repo }}">GitHub</a> Kontakt aufnehmen.</p>
-
-  <button id="acceptDisclaimer">Akzeptieren</button>
-  <button id="declineDisclaimer">Ablehnen</button>
-  </div>
-</div>
 
 
 
