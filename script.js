@@ -156,17 +156,23 @@ function setupInfoPopup() {
     });
 }
 
-function hrefDisclaimer() {
-    const tableBody = document.getElementById("tableBody");
-    tableBody.addEventListener("click", (event) => {
-        if (event.target.tagName === "STRONG") {
-            const description = event.target.parentElement.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
-            if (confirm(description)) {
-                window.location.href = event.target.parentElement.href;
-            }
-            event.preventDefault();
+function addClickListenerToSourceLink() {
+    document.addEventListener('click', function(event) {
+        if (event.target.closest('.source-link a')) {
+            hrefDisclaimer(event);
         }
     });
+}
+
+function hrefDisclaimer(event) {
+    const target = event.target.closest('.source-link a');
+    console.log('Adding click listener to source link');
+    const description = event.target.closest('tr').querySelector('td:nth-child(5)').innerText;
+    
+    if (confirm(description)) {
+        window.location.href = target.href;
+    }
+    event.preventDefault();
 }
 
 function tableSorter() {
@@ -204,7 +210,7 @@ function disclaimerPopup() {
 function copyIframeToClipboard(sid) {
     var iframeCode = "<iframe id='ivplayer' width='640' height='360' src='" + window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/?id=' + sid + "&accepted=True' style='border:none;'></iframe>";
     navigator.clipboard.writeText(iframeCode);
-  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     // filter table according to args
@@ -216,9 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // ensure header and footer spacings
     adjustBodyPadding();
 
-    // ensure hints on href clicks
-    hrefDisclaimer()
-
     // activate sorting on table heading clicks
     tableSorter()
 
@@ -227,6 +230,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // initial disclaimer popup
     disclaimerPopup()
+
+    // href disclaimer
+    addClickListenerToSourceLink();
 
     // set current year
     document.getElementById("currentYear").textContent = new Date().getFullYear();
