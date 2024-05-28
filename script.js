@@ -201,6 +201,11 @@ function disclaimerPopup() {
     });
 }
 
+function copyIframeToClipboard(sid) {
+    var iframeCode = "<iframe id='ivplayer' width='640' height='360' src='" + window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/?id=' + sid + "&accepted=True' style='border:none;'></iframe>";
+    navigator.clipboard.writeText(iframeCode);
+  }
+
 document.addEventListener("DOMContentLoaded", () => {
     // filter table according to args
     filterTable();
@@ -216,7 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // activate sorting on table heading clicks
     tableSorter()
-
 
     // info icon popups
     setupInfoPopup()

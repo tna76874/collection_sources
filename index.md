@@ -31,8 +31,13 @@ title: Materialsammlung
           {% endif %}
           </div>
           <a href="/?id={{ source.sid }}" title="share" onclick="navigator.clipboard.writeText(window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + this.getAttribute('href'))">
-            <i class="fas fa-share-nodes"></i>
+          <i class="fas fa-share-nodes"></i>
           </a>
+          {% if source.source_link == nil or source.source_link == "" %}
+          <a href="javascript:void(0)" title="copy link" onclick="copyIframeToClipboard('{{ source.sid }}')">
+            <i class="fas fa-circle-play"></i>
+          </a>
+          {% endif %}
           <i class="fas fa-info-circle info-icon" data-reviewed-from="{{ source.reviewed_from }}" data-reviewed-on="{{ source.reviewed_on }}"></i>
         </td>
         <td>{{ source.fach }}</td>
@@ -43,6 +48,3 @@ title: Materialsammlung
     {% endfor %}
   </tbody>
 </table>
-
-
-
