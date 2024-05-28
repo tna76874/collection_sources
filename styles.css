@@ -76,3 +76,45 @@ td a:hover {
 .info-popup p {
   margin: 0;
 }
+
+/* DISCLAIMER LOGIC */
+.disclaimer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: justify;
+  z-index: 10000;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+
+.disclaimer-content {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.disclaimer button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.disclaimer button:hover {
+  background-color: #0056b3;
+}

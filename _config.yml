@@ -2,6 +2,8 @@ remote_theme: jekyll/minima
 
 yt_base: https://yt.werkgymnasium.eu
 
+github_repo: tna76874/collection_sources
+
 markdown: null
 
 collections:

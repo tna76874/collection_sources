@@ -93,7 +93,7 @@ function sortMultiLevel() {
     });
     rows.forEach(row => tbody.appendChild(row));
 }
- 
+
 document.addEventListener("DOMContentLoaded", () => {
     filterTable();
     sortMultiLevel();
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tableBody.addEventListener("click", (event) => {
         if (event.target.tagName === "STRONG") {
             const description = event.target.parentElement.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
-            if (confirm("Es wird keine Gewähr für den Inhalt der Quelle übernommen. Die folgenden fachlichen Hinweise zu der Quelle werden zur Kenntnis genommen:\n\n" + description)) {
+            if (confirm(description)) {
                 window.location.href = event.target.parentElement.href;
             }
             event.preventDefault();
@@ -138,5 +138,25 @@ document.addEventListener("DOMContentLoaded", () => {
         icon.addEventListener('mouseleave', () => {
             infoPopup.style.display = 'none';
         });
+    });
+
+    // Disclaimer logic
+    const disclaimer = document.getElementById('disclaimer');
+    const acceptDisclaimer = document.getElementById('acceptDisclaimer');
+    const declineDisclaimer = document.getElementById('declineDisclaimer');
+
+    if (sessionStorage.getItem('disclaimerAccepted') !== 'true') {
+        disclaimer.style.display = 'block';
+    } else {
+        disclaimer.style.display = 'none';
+    }
+
+    acceptDisclaimer.addEventListener('click', () => {
+        sessionStorage.setItem('disclaimerAccepted', 'true');
+        disclaimer.style.display = 'none';
+        });
+
+    declineDisclaimer.addEventListener('click', () => {
+        window.location.href = 'https://google.de';
     });
 });
