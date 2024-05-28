@@ -33,6 +33,7 @@ title: Materialsammlung
           <a href="/?id={{ source.sid }}" title="share">
             <i class="fas fa-share-nodes"></i>
           </a>
+          <i class="fas fa-info-circle info-icon" data-reviewed-from="{{ source.reviewed_from }}" data-reviewed-on="{{ source.reviewed_on }}"></i>
         </td>
         <td>{{ source.fach }}</td>
         <td>Klassenstufe {{ source.klasse }}</td>

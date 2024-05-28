@@ -117,4 +117,26 @@ document.addEventListener("DOMContentLoaded", () => {
             ascending = !ascending;
         });
     });
+
+    // INFO ICON POPUP
+    const infoIcons = document.querySelectorAll('.info-icon');
+    const infoPopup = document.createElement('div');
+    infoPopup.className = 'info-popup';
+    document.body.appendChild(infoPopup);
+
+    infoIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', event => {
+            const reviewedFrom = icon.getAttribute('data-reviewed-from');
+            const reviewedOn = icon.getAttribute('data-reviewed-on');
+            infoPopup.innerHTML = `<p>Reviewed from: ${reviewedFrom}</p><p>Reviewed on: ${reviewedOn}</p>`;
+            const rect = icon.getBoundingClientRect();
+            infoPopup.style.top = `${rect.bottom + window.scrollY + 5}px`;
+            infoPopup.style.left = `${rect.left + window.scrollX}px`;
+            infoPopup.style.display = 'block';
+        });
+
+        icon.addEventListener('mouseleave', () => {
+            infoPopup.style.display = 'none';
+        });
+    });
 });
