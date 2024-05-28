@@ -28,7 +28,7 @@ title: Materialsammlung
           {% else %}
             <a href="{{ source.source_link }}"><strong>{{ source.thema }}</strong></a>
           {% endif %}
-          <a href="/?id={{ source.sid }}" title="share">
+          <a href="/?id={{ source.sid }}" title="share" onclick="navigator.clipboard.writeText(window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + this.getAttribute('href'))">
             <i class="fas fa-share-nodes"></i>
           </a>
           <i class="fas fa-info-circle info-icon" data-reviewed-from="{{ source.reviewed_from }}" data-reviewed-on="{{ source.reviewed_on }}"></i>
