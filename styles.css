@@ -2,7 +2,7 @@
   --primary-color: #0077cc;
   --secondary-color: #333;
   --text-color: #000; 
-  --hint-color: #ffffff;
+  --hint-color: #000000;
   --link-color: var(--primary-color);
 }
 
@@ -14,7 +14,7 @@ body {
   padding: 0;
   padding-top: 100px;
   padding-bottom: 50px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 table {
@@ -99,7 +99,7 @@ td a:hover {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgb(255, 255, 255);
   color: var(--hint-color);
   display: flex;
   flex-direction: column;
