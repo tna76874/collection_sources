@@ -14,6 +14,7 @@ body {
   padding: 0;
   padding-top: 100px;
   padding-bottom: 50px;
+  overflow: hidden;
 }
 
 table {
@@ -98,7 +99,7 @@ td a:hover {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 1);
   color: var(--hint-color);
   display: flex;
   flex-direction: column;
