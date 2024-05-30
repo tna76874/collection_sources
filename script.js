@@ -193,13 +193,16 @@ function disclaimerPopup() {
 
     if (sessionStorage.getItem('disclaimerAccepted') !== 'true') {
         disclaimer.style.display = 'block';
+        document.body.style.overflow = 'hidden';
     } else {
         disclaimer.style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
 
     acceptDisclaimer.addEventListener('click', () => {
         sessionStorage.setItem('disclaimerAccepted', 'true');
         disclaimer.style.display = 'none';
+        document.body.style.overflow = 'auto';
         });
 
     declineDisclaimer.addEventListener('click', () => {
