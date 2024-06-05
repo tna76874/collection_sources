@@ -1,6 +1,6 @@
 ---
 sid: 6E
-source_link: https://www.geogebra.org/m/ybqzp43n#material/PNB3b79k
+source_link: https://www.geogebra.org/m/PNB3b79k
 youtube_id: null
 youtube_time_start: null
 youtube_time_end: null

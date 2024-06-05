@@ -1,6 +1,6 @@
 ---
 sid: 6H
-source_link: https://www.geogebra.org/m/ybqzp43n#material/wMhPUYjX
+source_link: https://www.geogebra.org/m/wMhPUYjX
 youtube_id: null
 youtube_time_start: null
 youtube_time_end: null
